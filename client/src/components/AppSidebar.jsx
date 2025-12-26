@@ -34,6 +34,7 @@ const mainNavItems = [
 const secondaryNavItems = [
   { title: "Reports", url: "/reports", icon: BarChart3 },
   { title: "Attributes", url: "/attributes", icon: Settings2 },
+   { title: "Data-Base", url: "/database", icon: Settings2 },
 ];
 
 const footerNavItems = [

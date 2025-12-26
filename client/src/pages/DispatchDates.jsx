@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { StatsCards } from "@/components/StatsCards";
 import { PageHeader } from "@/components/PageHeader";
-
+import { useLocation } from "wouter";
 const productStats = [
   { title: "T shirt's", value: "124" },
   { title: "Pants", value: "575" },
@@ -23,9 +23,16 @@ const dispatchOrders = [
 ];
 
 export function DispatchDates() {
+   const [, setLocation] = useLocation();
+
+const onAddClick = (e) => {
+    e.preventDefault();
+    setLocation("/create-order");
+    }
+
   return (
     <div className="p-6 bg-[#f8fafc] min-h-screen">
-      <PageHeader title="Hi, Pradeep" />
+      <PageHeader title="Hi, Pradeep" onAddClick={onAddClick}/>
       
       <div className="border-b border-gray-200 mb-6" />
 

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/PageHeader";
 import { Badge } from "@/components/ui/badge";
+import { useLocation } from "wouter";
 
 const categories = [
   { name: "Full-Sublimation", count: 2 },
@@ -50,10 +51,16 @@ const departments = ["Designer", "Setting", "Raw Material", "Screen", "Cutting",
 
 export function OrdersQueue() {
   const [activeTab, setActiveTab] = useState("Designer");
+  const [, setLocation] = useLocation();
+
+const onAddClick = (e) => {
+    e.preventDefault();
+    setLocation("/create-order");
+    }
 
   return (
     <div className="p-6 bg-[#f8fafc] min-h-screen">
-      <PageHeader title="Hi, Deekshith" />
+      <PageHeader title="Hi, Deekshith"  onAddClick={onAddClick}/>
       
       <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
         {categories.map((cat, index) => (

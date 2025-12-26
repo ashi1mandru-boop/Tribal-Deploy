@@ -77,6 +77,7 @@ export function Attributes() {
   ];
 
   const handleAddClick = () => {
+
     switch (activeTab) {
       case "colors":
         setShowAddColorModal(true);

@@ -2,7 +2,7 @@ import { Search, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/PageHeader";
-
+import { useLocation } from "wouter";
 const missedOrders = [
   { jobId: "OR-2351", orderId: "ID-1758982813302-535", totalItemsUpdated: 15, updatedBy: "deekshith_designer", orderPlacedBy: "deekshith_designer", updatedDateTime: "30-09-2025", missedItems: 5, historyTab: "New" },
   { jobId: "OR-2351", orderId: "ID-1758982813302-535", totalItemsUpdated: 15, updatedBy: "deekshith_designer", orderPlacedBy: "deekshith_designer", updatedDateTime: "30-09-2025", missedItems: 5, historyTab: "New" },
@@ -10,9 +10,16 @@ const missedOrders = [
 ];
 
 export function MissingOrders() {
+
+   const [, setLocation] = useLocation();
+  
+  const onAddClick = (e) => {
+      e.preventDefault();
+      setLocation("/create-order");
+      }
   return (
     <div className="p-6 bg-[#f8fafc] min-h-screen">
-      <PageHeader title="Hi, Pradeep" />
+      <PageHeader title="Hi, Pradeep" onAddClick={onAddClick} />
       
       <div className="border-b border-gray-200 mb-6" />
 

@@ -6,6 +6,7 @@ import { StatsCards } from "@/components/StatsCards";
 import { PageHeader } from "@/components/PageHeader";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
+import { useLocation } from "wouter";
 
 const orders = [
   { id: 1, partyName: "Friends Club", orderId: "OR-0012000D", receivedDate: "20.09.2025", receivedTime: "10:30 AM", dispatchDate: "30.10.2025", status: "Delivered" },
@@ -32,9 +33,15 @@ const getStatusColor = (status) => {
 };
 
 export function Orders() {
+   const [, setLocation] = useLocation();
+const onAddClick = (e) => {
+    e.preventDefault();
+    setLocation("/create-order");
+    }
+
   return (
     <div className="p-6 bg-[#f8fafc] min-h-screen">
-      <PageHeader title="Hi, Pradeep" />
+      <PageHeader title="Hi, Pradeep" onAddClick={onAddClick}/>
       
       <div className="border-b border-gray-200 mb-6" />
 

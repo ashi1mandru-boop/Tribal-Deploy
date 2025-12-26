@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { StatsCards } from "@/components/StatsCards";
 import { PageHeader } from "@/components/PageHeader";
+import { useLocation } from "wouter";
 import {
   BarChart,
   Bar,
@@ -53,10 +54,15 @@ const stats = [
 
 export function Dashboard() {
   const [viewMode, setViewMode] = useState("chart");
-
+ const [, setLocation] = useLocation();
+const onAddClick = (e) => {
+    e.preventDefault();
+    setLocation("/create-order");
+    }
+ 
   return (
     <div className="p-6 bg-[#f8fafc] min-h-screen">
-      <PageHeader title="Hi, Pradeep" />
+      <PageHeader title="Hi, Pradeep" onAddClick={onAddClick}/>
       
       <div className="border-b border-gray-200 mb-6" />
 

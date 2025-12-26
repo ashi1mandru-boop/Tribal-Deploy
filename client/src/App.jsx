@@ -1,4 +1,7 @@
-import { Switch, Route, useLocation } from "wouter";
+import { Switch, Route, useLocation, Router as WouterRouter } from "wouter";
+//import { Switch, Route, Router } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
+//import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -19,6 +22,7 @@ import { OrderDetail } from "@/pages/OrderDetail.jsx";
 import { CreateOrder } from "@/pages/CreateOrder.jsx";
 import { Settings } from "@/pages/Settings.jsx";
 import { Login } from "@/pages/Login.jsx";
+import {ViewTables} from "@/pages/ViewTables.jsx";
 
 function MainLayout({ children }) {
   const sidebarStyle = {
@@ -41,7 +45,13 @@ function MainLayout({ children }) {
   );
 }
 
-function Router() {
+// function Router() {
+//   const [location] = useLocation();
+  
+//   if (location === "/login") {
+//     return <Login />;
+//   }
+function AppRouter() { // 2. Renamed your local function to AppRouter
   const [location] = useLocation();
   
   if (location === "/login") {
@@ -51,7 +61,9 @@ function Router() {
   return (
     <MainLayout>
       <Switch>
+        {/* <Route path="/" component={Login} /> */}
         <Route path="/" component={Dashboard} />
+          <Route path="/database" component={ViewTables} />
         <Route path="/orders" component={Orders} />
         <Route path="/orders-queue" component={OrdersQueue} />
         <Route path="/missing-orders" component={MissingOrders} />
@@ -71,11 +83,28 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <WouterRouter base="/Tribal-Deploy">
+       
         <Toaster />
-        <Router />
+        <AppRouter />
+        {/* // <Router /> */}
+        </WouterRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
 }
+// function App() {
+//   return (
+//     <QueryClientProvider client={queryClient}>
+//       <TooltipProvider>
+//         {/* Use the hook and remove the base prop for Hash routing */}
+//         <Route hook={useHashLocation}> 
+//           <Toaster />
+//           <AppRouter />
+//         </Route>
+//       </TooltipProvider>
+//     </QueryClientProvider>
+//   );
+// }
 
 export default App;

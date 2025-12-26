@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { StatsCards } from "@/components/StatsCards";
 import { PageHeader } from "@/components/PageHeader";
+import { useLocation } from "wouter";
 
 const departments = [
   { name: "Stitching", totalOrder: 5789, new: 0, clear: 0, pending: 0, hold: 0, entry: 0, delay: 0, outOfStock: 0 },
@@ -17,6 +18,13 @@ const departments = [
 ];
 
 export function Reports() {
+   const [, setLocation] = useLocation();
+
+const onAddClick = (e) => {
+    e.preventDefault();
+    setLocation("/create-order");
+    }
+
   return (
     <div className="p-6 bg-[#f8fafc] min-h-screen">
       <div className="flex flex-wrap items-center gap-4 mb-6">
@@ -30,7 +38,7 @@ export function Reports() {
           <ChevronDown className="w-4 h-4" />
         </Button>
         <div className="flex-1" />
-        <PageHeader title="" showDateFilter={true} showAddButton={true} />
+        <PageHeader title="" showDateFilter={true} showAddButton={true}  onAddClick={onAddClick}/>
       </div>
 
       <div className="mb-6">

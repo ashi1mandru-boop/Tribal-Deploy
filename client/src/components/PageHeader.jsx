@@ -6,7 +6,7 @@ export function PageHeader({
   showDateFilter = true, 
   showAddButton = true, 
   addButtonText = "Add New Order",
-  onAddClick 
+  onAddClick  
 }) {
   return (
     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
