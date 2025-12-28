@@ -6,8 +6,9 @@ import { Label } from "@/components/ui/label";
 import axios from 'axios';
 import { SiFacebook, SiX, SiInstagram, SiYoutube, SiWhatsapp } from "react-icons/si";
 import { ArrowRight } from "lucide-react";
-
-const API_BASE_URL = 'http://localhost:5000/api';
+// --- 2. ADD the import from your config file ---
+import { API_BASE_URL } from '../apiConfig';
+//const API_BASE_URL = 'http://localhost:5000/api';
 
 export function Login() {
   const [, setLocation] = useLocation();

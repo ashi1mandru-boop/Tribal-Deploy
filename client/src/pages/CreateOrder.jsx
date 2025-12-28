@@ -5,7 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import axios from 'axios';
-const API_BASE_URL = 'http://localhost:5000/api';
+// --- 2. ADD the import from your config file ---
+import { API_BASE_URL } from '../apiConfig';
+//const API_BASE_URL = 'http://localhost:5000/api';
 import {
   Select,
   SelectContent,

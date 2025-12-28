@@ -4,7 +4,8 @@ import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
-   base:"/Tribal-Deploy/",
+  //  base:"/Tribal-Deploy/",
+   base:"/TribalMockPage/",
   plugins: [
     react(),
     runtimeErrorOverlay(),

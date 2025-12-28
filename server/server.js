@@ -22,8 +22,21 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
 // Middleware
-app.use(cors()); // Enables cross-origin requests from your frontend
-app.use(express.json()); // Allows the server to parse JSON request bodies
+//app.use(cors()); // Enables cross-origin requests from your frontend
+// 1. Determine which URL to allow based on how you started the app
+const corsOrigin = process.env.NODE_ENV === 'production' 
+    ? process.env.FRONTEND_URL_PROD 
+    : process.env.FRONTEND_URL_LOCAL;
+
+// 2. Apply the dynamic origin to CORS
+app.use(cors({
+    origin: corsOrigin,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}));
+
+app.use(express.json());
+//app.use(express.json()); // Allows the server to parse JSON request bodies
 
 // MongoDB Connection
 mongoose.connect(MONGO_URI)
